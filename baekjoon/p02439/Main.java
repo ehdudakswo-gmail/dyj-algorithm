@@ -1,0 +1,41 @@
+package baekjoon.p02439;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        for (String ret : solve(sc.nextInt())) {
+            System.out.println(ret);
+        }
+    }
+
+    private static String[] solve(int n) {
+        String[] ret = new String[n];
+        int len = ret.length;
+
+        for (int i = 0; i < len; i++) {
+            int star = i + 1;
+            int blank = len - star;
+            ret[i] = solve2(blank, star);
+        }
+
+        return ret;
+    }
+
+    private static String solve2(int blank, int star) {
+        StringBuilder sb = new StringBuilder();
+
+        while (blank-- > 0) {
+            sb.append(" ");
+        }
+
+        while (star-- > 0) {
+            sb.append("*");
+        }
+
+        return sb.toString();
+    }
+
+}
